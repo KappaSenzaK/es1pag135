@@ -66,7 +66,9 @@ public class CatalogoClient {
                         String output = in.readUTF();
                         System.out.println("Risposta ricevuta dal server: " + output);
                         ServerResponse serverResponse = gson.fromJson(output, ServerResponse.class);
-                        System.out.println("Risposta del server: " + serverResponse);
+                        System.out.println("Risposta del server: ");
+                        serverResponse.getNotizie()
+                                .forEach(System.out::println);
                         List<Notizia> notizie = serverResponse.getNotizie();
                         for (Notizia notiziaServer : notizie) {
                             System.out.println("------------------");

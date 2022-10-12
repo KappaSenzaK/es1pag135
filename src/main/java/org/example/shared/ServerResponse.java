@@ -16,4 +16,11 @@ public class ServerResponse {
     public void setNotizie(List<Notizia> notizie) {
         this.notizie = notizie;
     }
+
+    @Override
+    public String toString() {
+        return "ServerResponse{" +
+                "notizie=" + notizie +
+                '}';
+    }
 }

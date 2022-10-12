@@ -3,6 +3,7 @@ package org.example.server;
 import org.example.shared.Notizia;
 import org.example.shared.Tipologia;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -16,6 +17,9 @@ public class NotiziaRepository {
     }
     private NotiziaRepository(){
         notizieSmistatePerTipologia = new HashMap<>();
+        notizieSmistatePerTipologia.put(Tipologia.AREA_GEOGRAFICA, new ArrayList<>());
+        notizieSmistatePerTipologia.put(Tipologia.SETTORE, new ArrayList<>());
+        notizieSmistatePerTipologia.put(Tipologia.ARGOMENTO, new ArrayList<>());
     }
 
 
