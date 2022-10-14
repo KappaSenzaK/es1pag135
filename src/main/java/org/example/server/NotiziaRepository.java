@@ -1,7 +1,7 @@
 package org.example.server;
 
 import org.example.shared.Notizia;
-import org.example.shared.Tipologia;
+import org.example.catalogo.Catalogo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,15 +17,15 @@ public class NotiziaRepository {
     }
     private NotiziaRepository(){
         notizieSmistatePerTipologia = new HashMap<>();
-        notizieSmistatePerTipologia.put(Tipologia.AREA_GEOGRAFICA, new ArrayList<>());
-        notizieSmistatePerTipologia.put(Tipologia.SETTORE, new ArrayList<>());
-        notizieSmistatePerTipologia.put(Tipologia.ARGOMENTO, new ArrayList<>());
+        notizieSmistatePerTipologia.put(Catalogo.AREA_GEOGRAFICA, new ArrayList<>());
+        notizieSmistatePerTipologia.put(Catalogo.SETTORE, new ArrayList<>());
+        notizieSmistatePerTipologia.put(Catalogo.ARGOMENTO, new ArrayList<>());
     }
 
 
-    private final HashMap<Tipologia, List<Notizia>> notizieSmistatePerTipologia;
+    private final HashMap<Catalogo, List<Notizia>> notizieSmistatePerTipologia;
 
-    public HashMap<Tipologia, List<Notizia>> getNotizieSmistatePerTipologia() {
+    public HashMap<Catalogo, List<Notizia>> getNotizieSmistatePerTipologia() {
         return notizieSmistatePerTipologia;
     }
 
@@ -37,7 +37,7 @@ public class NotiziaRepository {
         return false;
     }
 
-    public List<Notizia> getNotizie(Tipologia tipologia) {
-        return notizieSmistatePerTipologia.get(tipologia);
+    public List<Notizia> getNotizie(Catalogo catalogo) {
+        return notizieSmistatePerTipologia.get(catalogo);
     }
 }

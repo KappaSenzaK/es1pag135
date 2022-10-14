@@ -1,7 +1,16 @@
 package org.example.catalogo;
 
 public enum Catalogo {
-    SETTORE,
-    ARGOMENTO,
-    AREA_GEOGRAFICA
+    SETTORE("settore"),
+    ARGOMENTO("argomento"),
+    AREA_GEOGRAFICA("area geografica");
+
+    private final String nome;
+    Catalogo(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
 }

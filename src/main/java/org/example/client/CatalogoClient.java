@@ -1,13 +1,14 @@
 package org.example.client;
 
 import com.google.gson.Gson;
+import org.example.catalogo.Catalogo;
 import org.example.shared.Notizia;
 import org.example.shared.ServerResponse;
-import org.example.shared.Tipologia;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.Socket;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -33,53 +34,54 @@ public class CatalogoClient {
 
                 while(true){
                     Scanner scanner = new Scanner(System.in);
-                    System.out.println("Inserisci una tipologiaUtente (Settore, Argomento, Area Geografica), x per chiudere: ");
-                    String tipologiaUtente = scanner.nextLine();
-                    tipologiaUtente = tipologiaUtente.toLowerCase();
-                    if(tipologiaUtente.equalsIgnoreCase("x")){
+                    System.out.println("Inserisci una tipologia di catalogo (Settore, Argomento, Area Geografica), x per chiudere: ");
+                    String catalogoUser = scanner.nextLine();
+                    catalogoUser = catalogoUser.toLowerCase();
+                    if(catalogoUser.equalsIgnoreCase("x")){
                         System.out.println("Chiusura del client");
+                        out.writeUTF("x");
+                        out.flush();
+                        clientSocket.close();
                         break;
                     }
-                    List<String> tipologie = List.of("settore", "argomento", "area geografica");
-                    if(tipologie.contains(tipologiaUtente)){
-                        System.out.println("Inserisci il titolo della notizia: ");
-                        String titoloUser = scanner.nextLine();
 
-                        System.out.println("Inserisci il testo della notizia: ");
-                        String testo = scanner.nextLine();
+                    List<String> tipologie = List.of(
+                            Arrays.stream(Catalogo.values())
+                                    .map(Catalogo::getNome)
+                                    .toArray(String[]::new)
+                    );
 
-                        Tipologia tipologia = switch (tipologiaUtente) {
-                            case "settore" -> Tipologia.SETTORE;
-                            case "argomento" -> Tipologia.ARGOMENTO;
-                            case "area geografica" -> Tipologia.AREA_GEOGRAFICA;
-                            default -> null;
-                        };
-
-                        Notizia notizia = new Notizia(titoloUser, testo, tipologia);
-                        System.out.println("Notizia: " + notizia);
-                        Gson gson = new Gson();
-                        System.out.println("Invio notizia al server");
-                        out.writeUTF(gson.toJson(notizia));
-                        out.flush();
-                        System.out.println("Notizia inviata al server");
-                        System.out.println("Ricezione risposta dal server");
-                        String output = in.readUTF();
-                        System.out.println("Risposta ricevuta dal server: " + output);
-                        ServerResponse serverResponse = gson.fromJson(output, ServerResponse.class);
-                        System.out.println("Risposta del server: ");
-                        serverResponse.getNotizie()
-                                .forEach(System.out::println);
-                        List<Notizia> notizie = serverResponse.getNotizie();
-                        for (Notizia notiziaServer : notizie) {
-                            System.out.println("------------------");
-                            System.out.println(notiziaServer);
-                            System.out.println("------------------------------------------------");
-                        }
-
-                    } else {
+                    if(!tipologie.contains(catalogoUser)){
                         System.out.println("Tipologia non valida");
+                        continue;
                     }
+                    System.out.println("Inserisci il titolo della notizia: ");
+                    String titoloUser = scanner.nextLine();
 
+                    System.out.println("Inserisci il testo della notizia: ");
+                    String testo = scanner.nextLine();
+
+                    Catalogo catalogo = switch (catalogoUser) {
+                        case "settore" -> Catalogo.SETTORE;
+                        case "argomento" -> Catalogo.ARGOMENTO;
+                        case "area geografica" -> Catalogo.AREA_GEOGRAFICA;
+                        default -> null;
+                    };
+
+                    Notizia notizia = new Notizia(titoloUser, testo, catalogo);
+                    System.out.println("Notizia: " + notizia);
+                    Gson gson = new Gson();
+                    System.out.println("Invio notizia al server");
+                    out.writeUTF(gson.toJson(notizia));
+                    out.flush();
+                    System.out.println("Notizia inviata al server");
+                    System.out.println("Ricezione risposta dal server");
+                    String output = in.readUTF();
+                    ServerResponse serverResponse = gson.fromJson(output, ServerResponse.class);
+                    System.out.println("Numero di notizie trovate: " + serverResponse.getNumeroNotizie());
+                    System.out.println("Risposta del server: ");
+                    serverResponse.getNotizie()
+                            .forEach(System.out::println);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

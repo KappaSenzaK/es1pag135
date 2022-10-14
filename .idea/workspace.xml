@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef2bedc1-8ccf-433d-800e-14341cfe97a8" name="Changes" comment="">
+    <list default="true" id="ef2bedc1-8ccf-433d-800e-14341cfe97a8" name="Changes" comment="soft fix">
+      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/catalogo/Catalogo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/catalogo/Catalogo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/catalogo/CatalogoHelper.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/client/CatalogoClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/client/CatalogoClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/CatalogoServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/CatalogoServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/NotiziaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/NotiziaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/shared/Notizia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/shared/Notizia.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/shared/ServerResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/shared/ServerResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/shared/Tipologia.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,16 +46,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/stefano.hu1.stud_tul/Desktop/java/es1pag135",
-    "settings.editor.selected.configurable": "preferences.keymap"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/stefano.hu1.stud_tul/Desktop/java/es1pag135&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.CatalogoClient">
     <configuration name="CatalogoClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.client.CatalogoClient" />
@@ -95,6 +101,7 @@
       <workItem from="1665474009721" duration="2644000" />
       <workItem from="1665577926458" duration="64000" />
       <workItem from="1665577999294" duration="498000" />
+      <workItem from="1665765781248" duration="1908000" />
     </task>
     <servers />
   </component>
@@ -111,6 +118,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="soft fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="soft fix" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

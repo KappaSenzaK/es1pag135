@@ -1,14 +1,16 @@
 package org.example.shared;
 
+import org.example.catalogo.Catalogo;
+
 public class Notizia {
     private String titolo;
     private String testo;
-    private Tipologia tipologia;
+    private Catalogo catalogo;
 
-    public Notizia(String titolo, String testo, Tipologia tipologia) {
+    public Notizia(String titolo, String testo, Catalogo catalogo) {
         this.titolo = titolo;
         this.testo = testo;
-        this.tipologia = tipologia;
+        this.catalogo = catalogo;
     }
 
     public String getTitolo() {
@@ -27,12 +29,12 @@ public class Notizia {
         this.testo = testo;
     }
 
-    public Tipologia getTipologia() {
-        return tipologia;
+    public Catalogo getTipologia() {
+        return catalogo;
     }
 
-    public void setTipologia(Tipologia tipologia) {
-        this.tipologia = tipologia;
+    public void setTipologia(Catalogo catalogo) {
+        this.catalogo = catalogo;
     }
 
     @Override
@@ -40,7 +42,7 @@ public class Notizia {
         return "Notizia{" +
                 "titolo='" + titolo + '\'' +
                 ", testo='" + testo + '\'' +
-                ", tipologia=" + tipologia +
+                ", tipologia=" + catalogo +
                 '}';
     }
 }
