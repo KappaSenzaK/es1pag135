@@ -6,6 +6,7 @@ import org.example.shared.ServerResponse;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Arrays;
@@ -54,7 +55,14 @@ public class CatalogoServer {
                 in = new DataInputStream(clientSocket.getInputStream());
                 while (true) {
                     Gson gson = new Gson();
-                    Notizia notiziaClient = gson.fromJson(in.readUTF(), Notizia.class);
+                    String message = in.readUTF();
+                    System.out.println("Messaggio ricevuto: " + message);
+                    if(message.equalsIgnoreCase("x")){
+                        System.out.println("Chiusura del client");
+                        clientSocket.close();
+                        break;
+                    }
+                    Notizia notiziaClient = gson.fromJson(message, Notizia.class);
                     System.out.println("Notizia ricevuta dal client: " + notiziaClient);
 
                     if(NotiziaRepository.getInstance().addNotizia(notiziaClient)){
@@ -71,8 +79,10 @@ public class CatalogoServer {
                     out.flush();
                     System.out.println("Risposta inviata al client");
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (IOException e) {
+                System.err.println("Error: " +e.getMessage());
+                System.err.println(Arrays.toString(e.getStackTrace()));
+                System.err.println("Chiudo la connessione");
             }
         }
     }
